@@ -56,3 +56,18 @@ jobs:
       arch: ${{ matrix.arch }}
       build-deps-only: ${{ inputs.build-deps-only || false }}
     secrets: inherit
+    
+  build_osx_x86_64:
+    name: Build Only Osx x86_64
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-12
+            arch: x86_64
+    uses: ./.github/workflows/build_check_cache.yml
+    with:
+      os: ${{ matrix.os }}
+      arch: ${{ matrix.arch }}
+      build-deps-only: ${{ inputs.build-deps-only || false }}
+    secrets: inherit
